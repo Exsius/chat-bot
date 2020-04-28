@@ -20,7 +20,7 @@ app.get('/', function(req, res) {
 	res.send("Hello World")
 })
 
-let token = "EAADTXVXZCI8gBAEsaq7YKrSrjbcrmaZB2jB6hRCIOb4MNJ4p4i7dfYRwOhyZBHlhqI82jdPxLZA3sbykmr29tHTALhmGQgkIyC6DnrgVWCZC9TgZAJPkiRVnk0fKMe58VXALsZBRm8ZBpDQHVRZBJHZA5RebAXfDW2OixdL6dI79Kk7gZDZD"
+let token = "EAADTXVXZCI8gBAOgwCXniZCsoLEwha26qKQPsojuVxPZApCEQgQYXsVdgZBzdDXWZCuJzNyHZBMcs08FRStijjsjXWOhM5RolKrT0Rbfuq4CX3gZBklcgoa5oYnlITH8Th7xsJ6BKNr99yGeZA5644XXIFQqAhzNEYiII26EfkZABnwZDZD"
 
 //facebook
 app.get('/webhook/', function(req, res) {
