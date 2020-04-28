@@ -37,18 +37,18 @@ app.post('/webhook/', function(req, res) {
 		let sender = event.sender.id
 		if (event.mssage && event.message.text) {
 			let text = event.message.text
-			//sendText(sender, "text echo" + text.substring(0, 100))
+			sendText(sender, "text echo" + text.substring(0, 100))
 		}
 	}
 	res.sendStatus(200)
 })
 
-/*
+
 function sendText(sender, text) {
 	let messageData = {text: text}
 	request ({
 		url: "https://graph.facebook.com/v2.6/me/messages",
-		qs : {access_token : token}
+		qs : {access_token, token}
 		method: "POST"
 		json: {
 			recipient: {id: sender},
@@ -62,7 +62,7 @@ function sendText(sender, text) {
 			}
 	})
 }
-*/
+
 
 app.listen(app.get('port'), function() {
 	console.log("running: port")
