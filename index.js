@@ -24,11 +24,25 @@ let token = "EAADTXVXZCI8gBAOgwCXniZCsoLEwha26qKQPsojuVxPZApCEQgQYXsVdgZBzdDXWZC
 
 //facebook
 app.get('/webhook/', function(req, res) {
-	if (req.query['hub.verify_token'] === "carlos1337") {
+	if (req.query['hub.verify_token'] == "carlos") {
 		res.send(req.query['hub.challenge'])
 	}
 	res.send("incorrect token")
 })
+
+app.post('/webhook/', function(req, res) {
+	let messaging_events = req.body.entry[0].messaging
+	for (let i = 0; i < messaging_events.length; i++) {
+		let event = messaging_events[i]
+		let sender = event.sender.id
+		if (event.mssage && event.message.text) {
+			let text = event.message.text
+			sendText(sender, "text echo" + text.substring(0, 100))
+		}
+	}
+	res.sendStatus(200)
+})
+
 
 function sendText(sender, text) {
 	let messageData = {text: text}
