@@ -1,11 +1,11 @@
 'use strict';
 
 // Imports dependencies and set up http server
-const
-	request = require('request');
-	express = require('express'),
-	bodyParser = require('body-parser'),
-	app = express().use(bodyParser.json()); // creates express http server
+
+const request = require('request');
+const express = require('express'),
+const bodyParser = require('body-parser'),
+const app = express().use(bodyParser.json()); // creates express http server
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 5000, () => console.log('webhook is listening'));
