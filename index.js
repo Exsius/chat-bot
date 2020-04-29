@@ -23,14 +23,6 @@ app.post('/webhook', (req, res) => {
       // Gets the message. entry.messaging is an array, but 
       // will only ever contain one message, so we get index 0
       let webhook_event = entry.messaging[0];
-	  for (let i = 0; i < webhook_event.length; i++) {
-		let event = messaging_events[i]
-		let sender = event.sender.id
-		if (event.mssage && event.message.text) {
-			let text = event.message.text
-			sendText(sender, "text echo" + text.substring(0, 100))
-		}
-	}
       console.log(webhook_event);
     });
 
@@ -63,28 +55,10 @@ app.get('/webhook', (req, res) => {
       // Responds with the challenge token from the request
       console.log('WEBHOOK_VERIFIED');
       res.status(200).send(challenge);
+    
     } else {
       // Responds with '403 Forbidden' if verify tokens do not match
       res.sendStatus(403);      
     }
   }
 });
-
-function sendText(sender, text) {
-	let messageData = {text: text}
-	request ({
-		url: "https://graph.facebook.com/v2.6/me/messages",
-		qs : {access_token : "EAADTXVXZCI8gBAI83i6hNzSZBURibEIygTBBW6ZA2XX76HmmSGuQ2K7PzX3h8ctMBEDAQxtvtZBqj1crQlEhAWt2ntwcZCcuQtB3jrOqSbvBAU8HTWKnqAh273ZARYKRjpZBMsR7hsY8uijH5pRaT37E7dGyaCVjfjVfqZB5dC32BQZDZD"},
-		method: "POST",
-		json: {
-			recipient: {id: sender},
-			message: messageData,
-            }
-		}, function (error, response, body) {
-			if (error) {
-				console.log("error")
-			} else if (response.body.error){
-				console.log("body error")
-			}
-	})
-}
