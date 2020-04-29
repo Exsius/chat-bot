@@ -65,13 +65,13 @@ app.get('/webhook', (req, res) => {
 });
 
 function sendMessage() {
-		request ({
+	request ({
 		url: https://graph.facebook.com/v2.6/me/messages",
-		qs : {access_token : "EAADTXVXZCI8gBAK2opXozq0sa7aA3h7iGqXDcdsgC0tWGB1BUzeYWpazIl45o67WVLKEZBNxsICxkmuYypRuuYjH3sKEHUVYsV9bubxj0AQc4l96Ugm5gRkyygn8wRi5J1wVEYazUM5L0GLIeBrpM5sQDUVXYHvKlPuCHAuwZDZD"}
-		method: "POST"
+		qs : {access_token : "EAADTXVXZCI8gBAEaLtKY6TbdWZB1Df7F1mZCkRwcMxVZCjWbWyZCPGdBKxYezKvej0OezfDVJiT7q56ZCo6o4SN8vpjySYnueAVus0uSIqxfaYv79gAofiGkzDZB818XxpW9zXngs8JlFcRRjZCVb3wjqEVbI3XndKhfQAFuD0ZADKwZDZD"},
+		method: "POST",
 		json: {
-			recipient: {id: sender},
-			message: "test"
+			recipient: {id: req.body.entry[0].messaging[0].sender.id},
+			message: "test",
             }
 		}, function (error, response, body) {
 			if (error) {
